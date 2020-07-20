@@ -1,0 +1,127 @@
+---
+title: "analisis de correspondencia mujeres humlladas o menospreciadas a lo largo de su vida en un ambito publico"
+author: "ENRIQUE"
+date: "19/7/2020"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+# Trabajando con la base de datos de mujeres solteras
+analisis de correspondecia entre las variables:
+
+* depto: Departamento  
+* S1_01_1: ¿A lo largo de su vida, en algún lugar público algún(os) hombre(s) conocido(s) o desconocido(s), sin considerar a su (ex) pareja/ (ex) novio, la han humillado o menospreciado (la han hecho sentir menos)?
+ 
+importando la bd
+```{r,echo=FALSE}
+load("C:\\Users\\Dell\\Documents\\GitHub\\mi_proyecto1_EST_384\\proy_MineriaDatos\\bd_proy\\bd_per.RData")
+load("C:\\Users\\Dell\\Documents\\GitHub\\mi_proyecto1_EST_384\\proy_MineriaDatos\\bd_proy\\bd_viv.RData")
+load("C:\\Users\\Dell\\Documents\\GitHub\\mi_proyecto1_EST_384\\proy_MineriaDatos\\bd_proy\\bd_sol.RData")
+load("C:\\Users\\Dell\\Documents\\GitHub\\mi_proyecto1_EST_384\\proy_MineriaDatos\\bd_proy\\bd_cas.RData")
+load("C:\\Users\\Dell\\Documents\\GitHub\\mi_proyecto1_EST_384\\proy_MineriaDatos\\bd_proy\\bd_sep.RData")
+```
+
+```{r,echo=FALSE}
+str(bd_sol$area)
+str(bd_sol$S1_01_1)
+
+library(dplyr)
+library(ca)
+table(bd_sol$S1_01_1)
+
+sol<-bd_sol %>% rename(Mujeres_humilladas_en_publico_por_un_hombre=S1_01_1)
+t1<-bd_sol %>% select(depto,S1_01_1) %>% table()
+attr(t1,"names")
+
+chisq.test(t1)
+
+str(t1)
+res1<-ca(t1)
+res1
+plot(res1)
+
+```
+analisis de correspondencia
+programando
+```{r, echo=FALSE}
+#programando el ca
+lcol<-colnames(t1)
+lrow<-rownames(t1)
+P<-prop.table(t1)
+r<-margin.table(P,1)
+c<-margin.table(P,2)
+Dr<-diag(r)
+Dc<-diag(c)
+##Paso 1
+P-r%*%t(c)
+
+# corrigiendo el problema
+S<-diag(r^(-0.5))%*%(P-r%*%t(c))%*% diag(c^(-0.5))
+# 2 descomposición SVD
+svd(S)
+U<-svd(S)$u
+V<-svd(S)$v
+Da<-diag(svd(S)$d)
+#verificando las propiedades
+U %*% t(U) 
+t(V) %*% V
+U %*% Da %*% t(V)
+S
+# 3 Coordenadas principales filas
+FF<- diag(r^(-0.5)) %*% U %*% Da
+# 4 Coordenadas principales columnas
+G<- diag(c^(-0.5)) %*% V %*% Da
+# 5 Coordenadas estandar filas
+X<- diag(r^(-0.5)) %*% U 
+# 6 Coordenadas estandar columnas
+Y<- diag(c^(-0.5)) %*% V 
+# 7 inercia
+sum(((P-r%*%t(c))**2)/(r%*%t(c)))
+#graficando
+xmin<-min(c(FF[,1],G[,1]))
+xmax<-max(c(FF[,1],G[,1]))
+ymin<-min(c(FF[,2],G[,2]))
+ymax<-max(c(FF[,2],G[,2]))
+plot(FF[,1],FF[,2],col="red",xlim=c(xmin,xmax)*1.5,ylim=c(ymin,ymax)*1.1)
+points(G[,1],G[,2],col="blue")
+abline(h=0,v=0,lty=2)
+#incluyendo el texto
+plot(FF[,1],FF[,2],xlim=c(xmin,xmax)*1.5,ylim=c(ymin,ymax)*1.1,type = "n")
+text(FF[,1],FF[,2],labels = lrow,col="red",cex=0.7)
+text(G[,1],G[,2],labels = lcol,col="blue",cex=0.7)
+abline(h=0,v=0,lty=2)
+```
+Resultados en 2 y 1 dimension
+```{r,echo=FALSE}
+#incluyendo mas información
+plot(FF[,1],FF[,2],xlim=c(xmin,xmax)*1.5,ylim=c(ymin,ymax)*1.1,type = "n")
+text(FF[,1],FF[,2],labels = lrow,col="red",cex=0.5+r*2)
+text(G[,1],G[,2],labels = lcol,col="blue",cex=0.5+c*2)
+abline(h=0,v=0,lty=2)
+title("Mujeres mayores de 15 años humilladas o menospreciadas por un
+      hombre conocido o desconocido en un lugar publico a lo largo de su
+      vida")
+#viendo solo una dimensión
+plot(rep(0,dim(FF)[1]),FF[,1],type = "n", axes = F)
+axis(2)
+text(rep(0,dim(FF)[1]),FF[,1],labels = lrow,col="red",cex=0.5+r*2)
+text(rep(0,dim(G)[1]),G[,1],labels = lcol,col="blue",cex=0.5+c*2)
+abline(h=0,v=0,lty=2)
+title("Mujeres mayores de 15 años humilladas o menospreciadas por un
+      hombre conocido o desconocido en un lugar publico a lo largo de su
+      vida")
+```
+
+utilizando la libreria FactoMineR Y explor
+```{r, echo=FALSE}
+library(FactoMineR)
+library(explor)
+mca<-MCA(sol[,c(4,7)])
+explor(mca)
+
+```
+

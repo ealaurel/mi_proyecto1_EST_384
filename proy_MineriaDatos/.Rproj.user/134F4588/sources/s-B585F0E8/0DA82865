@@ -1,0 +1,32 @@
+{
+    "id": "0DA82865",
+    "path": null,
+    "project_path": null,
+    "type": "r_dataframe",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1595217235342.0,
+    "source_on_save": false,
+    "relative_order": 5,
+    "properties": {
+        "expression": "bd_cart",
+        "caption": "bd_cart",
+        "totalObservations": 1213,
+        "displayedObservations": 1213,
+        "variables": 7,
+        "cacheKey": "BF58914B",
+        "object": "bd_cart",
+        "environment": "",
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=bd_cart&cache_key=BF58914B&max_cols=50",
+        "preview": 0
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1319885718248,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1595217235342,
+    "read_only": false,
+    "read_only_alternatives": []
+}

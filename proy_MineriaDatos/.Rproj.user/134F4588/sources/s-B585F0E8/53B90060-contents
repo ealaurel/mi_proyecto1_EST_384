@@ -1,0 +1,27 @@
+---
+title: "exploracion"
+author: "ENRIQUE"
+date: "19/7/2020"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+cargando las bases de datos
+```{r}
+load("C:\\Users\\Dell\\Documents\\GitHub\\mi_proyecto1_EST_384\\proy_MineriaDatos\\bd_proy\\bd_per.RData")
+load("C:\\Users\\Dell\\Documents\\GitHub\\mi_proyecto1_EST_384\\proy_MineriaDatos\\bd_proy\\bd_viv.RData")
+load("C:\\Users\\Dell\\Documents\\GitHub\\mi_proyecto1_EST_384\\proy_MineriaDatos\\bd_proy\\bd_sol.RData")
+load("C:\\Users\\Dell\\Documents\\GitHub\\mi_proyecto1_EST_384\\proy_MineriaDatos\\bd_proy\\bd_cas.RData")
+load("C:\\Users\\Dell\\Documents\\GitHub\\mi_proyecto1_EST_384\\proy_MineriaDatos\\bd_proy\\bd_sep.RData")
+```
+
+
+
+```{r}
+attributes(bd_per2)$variable.labels
+```
+
