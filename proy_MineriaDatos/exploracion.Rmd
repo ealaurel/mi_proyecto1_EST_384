@@ -19,3 +19,9 @@ load("C:\\Users\\Dell\\Documents\\GitHub\\mi_proyecto1_EST_384\\proy_MineriaDato
 load("C:\\Users\\Dell\\Documents\\GitHub\\mi_proyecto1_EST_384\\proy_MineriaDatos\\bd_proy\\bd_sep.RData")
 ```
 
+
+
+```{r}
+attributes(bd_per2)$variable.labels
+```
+
