@@ -22,6 +22,6 @@ load("C:\\Users\\Dell\\Documents\\GitHub\\mi_proyecto1_EST_384\\proy_MineriaDato
 
 
 ```{r}
-attributes(bd_per2)$variable.labels
+#attributes(bd_per2)$variable.labels
 ```
 
