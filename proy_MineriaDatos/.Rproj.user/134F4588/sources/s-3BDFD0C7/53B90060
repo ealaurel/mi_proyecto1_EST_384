@@ -1,0 +1,27 @@
+{
+    "id": "53B90060",
+    "path": "~/GitHub/mi_proyecto1_EST_384/proy_MineriaDatos/exploracion.Rmd",
+    "project_path": "exploracion.Rmd",
+    "type": "r_markdown",
+    "hash": "0",
+    "contents": "",
+    "dirty": true,
+    "created": 1595170538253.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "tempName": "Untitled1",
+        "cursorPosition": "24,1",
+        "scrollLine": "13",
+        "last_setup_crc32": "",
+        "chunk_output_type": "console"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1595446809,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1595691402080,
+    "read_only": false,
+    "read_only_alternatives": []
+}

@@ -1,0 +1,16 @@
+\begin{thebibliography}{1}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \def\href#1#2{#2} \def\path#1{#1}\fi
+
+\bibitem{Lenat83a}
+D.~B. Lenat, \href{http://dx.doi.org/10.1016/S0004-3702(83)80005-8}{{EURISKO:}
+  {A} program that learns new heuristics and domain concepts}, Artif. Intell.
+  21~(1-2) (1983) 61--98.
+\newblock \href {http://dx.doi.org/10.1016/S0004-3702(83)80005-8}
+  {\path{doi:10.1016/S0004-3702(83)80005-8}}.
+\newline\urlprefix\url{http://dx.doi.org/10.1016/S0004-3702(83)80005-8}
+
+\end{thebibliography}
