@@ -118,18 +118,18 @@ title("Mujeres mayores de 15 años humilladas o menospreciadas por un
 
 utilizando la libreria FactoMineR Y explor
 ```{r, echo=FALSE}
-#library(FactoMineR)
-#library(explor)
-#mca<-MCA(sol[,c(4,7)])
-#explor(mca)
+library(FactoMineR)
+library(explor)
+mca<-MCA(sol[,c(4,7)])
+explor(mca)
 
 ```
 ```{r}
-#res <- explor::prepare_results(mca)
-#explor::MCA_var_plot(res, xax = 1, yax = 2, var_sup = FALSE, var_sup_choice = ,
- #   var_lab_min_contrib = 0, col_var = "Variable", symbol_var = NULL, size_var = NULL,
-  #  size_range = c(10, 300), labels_size = 10, point_size = 56, transitions = TRUE,
-   # labels_positions = "auto", labels_prepend_var = FALSE, xlim = c(-2.74, 2.66),
-    #ylim = c(-2.4, 3))
+res <- explor::prepare_results(mca)
+explor::MCA_var_plot(res, xax = 1, yax = 2, var_sup = FALSE, var_sup_choice = ,
+    var_lab_min_contrib = 0, col_var = "Variable", symbol_var = NULL, size_var = NULL,
+    size_range = c(10, 300), labels_size = 10, point_size = 56, transitions = TRUE,
+    labels_positions = "auto", labels_prepend_var = FALSE, xlim = c(-2.74, 2.66),
+    ylim = c(-2.4, 3))
 ```
 
