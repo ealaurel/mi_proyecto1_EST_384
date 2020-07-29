@@ -114,6 +114,9 @@ denunciar: por lo menos pidio ayuda a alguna institucion, en alguna ocasion
 levels(bd_cart$S2_5_1)
 aux4<-c("1. Muchas veces","2. Pocas veces","3. Una vez")
 
+#bd_cart<-bd_cart %>% mutate(vio_inf1=S2_5_1
+#=="1. Muchas veces"|S2_5_2=="1. Muchas veces"|S2_5_3=="1. Muchas veces"|S2_5_4=="1. Muchas veces"|S2_5_5=="1. Muchas veces"|S2_5_6=="1. Muchas veces"|S2_5_1=="1. Muchas veces")
+
 bd_cart<-bd_cart %>% mutate(violencia_infancia=S2_5_1
 ==aux4|S2_5_2==aux4|S2_5_3==aux4|S2_5_4==aux4|S2_5_5==aux4|S2_5_6==aux4|S2_5_1==aux4)
 

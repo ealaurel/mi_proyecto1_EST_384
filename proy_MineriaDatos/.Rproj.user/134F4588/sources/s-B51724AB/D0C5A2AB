@@ -3,16 +3,16 @@
     "path": "~/GitHub/mi_proyecto1_EST_384/proy_MineriaDatos/analisis_correspondecia.Rmd",
     "project_path": "analisis_correspondecia.Rmd",
     "type": "r_markdown",
-    "hash": "3219871427",
+    "hash": "0",
     "contents": "",
-    "dirty": false,
+    "dirty": true,
     "created": 1595175313519.0,
     "source_on_save": false,
     "relative_order": 3,
     "properties": {
         "tempName": "Untitled1",
-        "cursorPosition": "132,5",
-        "scrollLine": "118",
+        "cursorPosition": "1,11",
+        "scrollLine": "0",
         "last_setup_crc32": "",
         "chunk_output_type": "console"
     },
@@ -21,7 +21,7 @@
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1596046200777,
+    "last_content_update": 1596063492581,
     "read_only": false,
     "read_only_alternatives": []
 }
