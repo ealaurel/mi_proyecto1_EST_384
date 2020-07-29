@@ -15,11 +15,11 @@ knitr::opts_chunk$set(echo = TRUE)
 con la base de datos de mujeres casadas
 
 Cargando la base de datos
-```{r}
+```{r,message=FALSE}
 load("C:\\Users\\Dell\\Documents\\GitHub\\mi_proyecto1_EST_384\\proy_MineriaDatos\\bd_proy\\bd_cas.RData")
 ```
 preprando la base de datos
-```{r}
+```{r,message=FALSE}
 library(dplyr)
 aux<-seq(284,347,3)
 
@@ -53,7 +53,7 @@ sea "y" una variable
 Indicio de Feminicidio: por los menos sucedio una ves alguna de las variables ya mencionadas
 Indicios de Feminici: variable de tipo binario
 donde "y" es un posible indicador de indicios de feminicidio
-```{r}
+```{r,message=FALSE}
 levels(bd_lp$S3_10_13)
 table(is.na(bd_lp))
 
@@ -77,7 +77,7 @@ Hmisc::describe(bd_lp2)
 
 
 volviendo a las demas variables binarias
-```{r}
+```{r,message=FALSE}
 bd_lp2<-bd_lp2 %>% mutate(pal_gros=S3_10_01=="1. Muchas veces"|S3_10_01=="2. Pocas veces"|S3_10_01=="3. Una vez")
 
 bd_lp2<-bd_lp2 %>% mutate(humillacion=S3_10_02=="1. Muchas veces"|S3_10_02=="2. Pocas veces"|S3_10_02=="3. Una vez")
@@ -115,7 +115,7 @@ bd_lp2<-bd_lp2 %>% dplyr::select(-c(1:16))
 Hmisc::describe(bd_lp2)
 ```
 bd de entrenamiento y testeo
-```{r}
+```{r,message=FALSE}
 set.seed(123)
 index = sample(1:2, nrow(bd_lp2), replace = TRUE, prob=c(0.7, 0.3))
 prop.table(table(index))
@@ -123,34 +123,34 @@ trainbd<-bd_lp2[index==1,]
 testbd<-bd_lp2[index==2,]
 ```
 modelos logit
-```{r}
+```{r,message=FALSE}
 m1<-glm(ind_feminicidio~.,data=trainbd,family = binomial(link="logit"))
 ```
 idientificadno las variables significativas
-```{r}
+```{r,message=FALSE}
 summary(m1)
 m2<-step(m1)
 summary(m2)
 ```
 Predecir la clase de pertenencia en la base de test ($prob>0.5$)
   
-```{r}
+```{r,message=FALSE}
 clase<-predict(m2,testbd,type="response")>0.5
 table(clase)
 ```
 comparando lo observado y lo predicho
-```{r}
+```{r,message=FALSE}
 table(testbd$ind_feminicidio,clase)
 ```
 Generar la matriz de confusión (librería caret)
   
-```{r}
+```{r,message=FALSE}
 library(caret)
 confusionMatrix(table(testbd$ind_feminicidio,clase))
 ```
 Efectos marginales
 
-```{r}
+```{r,message=FALSE}
 library(mfx)
 info<-logitmfx(formula(m2),data=testbd)
 barplot(info$mfxest[,1],horiz = T,las=1,cex.names = 0.7,xlim=c(-0.1,0.7),pos=-0.02)
