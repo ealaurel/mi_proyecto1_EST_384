@@ -3,7 +3,7 @@
     "path": "~/GitHub/mi_proyecto1_EST_384/proy_MineriaDatos/clasificacion_logit_probit.Rmd",
     "project_path": "clasificacion_logit_probit.Rmd",
     "type": "r_markdown",
-    "hash": "3046071000",
+    "hash": "4072905431",
     "contents": "",
     "dirty": false,
     "created": 1595186571189.0,
@@ -11,17 +11,17 @@
     "relative_order": 4,
     "properties": {
         "tempName": "Untitled1",
-        "cursorPosition": "116,0",
-        "scrollLine": "98",
+        "cursorPosition": "160,0",
+        "scrollLine": "142",
         "last_setup_crc32": "",
         "chunk_output_type": "console"
     },
     "folds": "",
-    "lastKnownWriteTime": 1595216515,
+    "lastKnownWriteTime": 1595996618,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1595216515287,
+    "last_content_update": 1595996618932,
     "read_only": false,
     "read_only_alternatives": []
 }

@@ -104,7 +104,7 @@ Factores que puedan ayudar a tomar decisiones o nuevas políticas.
 \subsection{Marco Normativo}
 La Constitución Política del Estado (CPE) es nuestra Ley Fundamental mediante la cual se refunda el Estado con la voluntad de todas y todos los ciudadanos, ha replanteado las estructuras jurídicas, económicas y sociales de Bolivia, así que la misma CPE, establece mandatos a ley
 específicos, debiendo además adecuar toda la legislación
-anterior a la CPE.
+anterior a la CPE.\autocite{ley348}
 
 En la CPE la Equidad de Género se desarrolla transversalmente en todo el texto constitucional:
 \begin{itemize}
@@ -205,7 +205,7 @@ Se cuenta con 5 bases de datos:
 \item Variables referidos a quienes son los que cometen violencia hacia las mujeres en el ámbito laboral, base de datos de mujeres, solteras, casadas y separadas,sección 1, pregunta número  21 tipo A
 \end{itemize}
 
-\section{Metodologia}
+\section{Metodología}
 \subsection{Análisis de Correspondencia}
 El análisis de correspondencia
 (AC) es una técnica de interdependencia que se ha ido haciendo más
@@ -224,7 +224,13 @@ cruzada, es decir, min(F-1,C-1), donde F es el número de filas y C es el
 número de columnas. Si X y Y son
 variables categóricas con valores {$x_1,x_2,..,x_r$} y ${y_1,y_2,...,y_c}$ como se puede ver en la siguiente tabla:
 
-\includegraphics{tabla_corres.png}
+\begin{table}[!htb]
+    %\centering
+    \includegraphics{tabla_corres.png}
+    %\caption{Caption}
+    \label{tab1}
+\end{table}
+
 
 La frecuencia $n_i_.$ = $\sum_{j=1}^{c}n_i_j$ 
 recibe  el  nombre  de  frecuencia marginales de X, y     $n_._j$ = $\sum_{i=1}^{r}n_i_j$ recibe
@@ -253,7 +259,7 @@ las variables X y Y son dependientes,
 es conveniente saber el tipo de dependencia, esto se logra obteniendo
 los residuos tipificados corregidos :
 \begin{equation}
-r_i_j = \frac{n_i_j-e_i_j}{\sqrt{e_i_j}\sqrt{(1-\frac{n_i_.}{n_._.})*(1-\frac{n_._j}{n_._.})}}
+r_i_j = \frac{n_i_j-e_i_j}{\sqrt{e_i_j}\sqrt{1-\frac{n_i_.}{n_._.}}}}{\sqrt{1-\frac{n_._j}{n_._.}}}
 
 \end{equation}
 
@@ -328,34 +334,71 @@ segun la investigacion \autocite{cruz2019factores}, en su articulo que se basa a
 \item toxicos 
 \end{itemize}
 
-La moyoria de estas caracteristicas se encuentran en las variables de nuestra bd_cas,las cuales son:
+La moyoria de estas caracteristicas se encuentran en las variables de nuestra bd_cas,las cuales son,
+
+¿Desde que inició la relación con su (ex) pareja/ (ex) novio, alguna vez él:
+
 \begin{itemize}
-    \item 	¿Desde que inició la relación con su (ex) pareja/ (ex) novio, alguna vez él la ha abofeteado, golpeado con las manos o puños?
+    \item  la ha abofeteado, golpeado con las manos o puños?
 
-\item	¿Desde que inició la relación con su (ex) pareja/ (ex) novio, alguna vez él la ha golpeado con algún objeto?
+\item  la ha golpeado con algún objeto?
 
-* \item	¿Desde que inició la relación con su (ex) pareja/ (ex) novio, alguna vez él la ha pateado?
-\item	¿Desde que inició la relación con su (ex) pareja/ (ex) novio, alguna vez él la ha tratado de ahorcar o asfixiar?
+\item	 la ha pateado?
+\item	 la ha tratado de ahorcar o asfixiar?
 
-\item	¿Desde que inició la relación con su (ex) pareja/ (ex) novio, alguna vez él la ha agredido con cuchillo, navaja, pistola o cualquier otra arma?
+\item	la ha agredido con cuchillo, navaja, pistola o cualquier otra arma?
 
-\item	¿Desde que inició la relación con su (ex) pareja/ (ex) novio, alguna vez él le ha disparado con un arma?
+\item	le ha disparado con un arma?
  
 \end{itemize}
 
-sea "y" una variable
+Definiendo " Indicio de Feminicidio'' una variable
 \begin{itemize}
-    \item y: por los menos sucedio una ves alguna de las variables ya mencionadas
-    \item variable de tipo binario
-donde "y" es un posible indicador de indicios de feminicidio
+    \item Indicios de Feminicidio: por los menos sucedio una ves alguna de las variables ya mencionadas
 
 \end{itemize}
+variable de tipo binario
+donde " Indicios de Feminicidio'' es un posible indicador de indicios de feminicidio.
 
-\includegraphics{calsifica_logit.png}
-\subsection{Arboles de Clasificación (CART) }
+\begin{figure}[!htp]
+%\centering
+\includegraphics[scale=0.7]{log2.png}
+\caption{Modelo Logit}
+\label{f1_log}
+\end{figure}
+
+Las etiquetas de las variables en la figura \ref{f1_log} son las siguientes:
+¿Desde que inició la relación con su (ex) pareja/ (ex) novio, alguna vez él,						
+
+\begin{itemize}
+    %\item exige-rela: le ha exigido tener relaciones sexuales aunque usted no quería?
+    item oblig-rela:  ha usado la fuerza física para obligarla a tener relaciones sexuales?
+    \item amenaza-armas:la ha amenazado con armas (cuchillo, navaja o pistola)?
+    \item empujado:  la ha empujado o le ha jalado el cabello?
+    \item quit-dinero:  le ha quitado, o se ha adueñado de su dinero?
+    \item destruido-cosas:  ha destruido, tirado o escondido sus cosas?
+    \item no-gast-casa : aunque tenga dinero no cumple con los gastos del hogar?
+    %\item prohib-prop:  le ha prohibido adquirir bienes o propiedades a su nombre?
+    \item quitar-hijos:  la ha amenazado con quitarle a sus hijos/as?
+    \item amenaza-matar:  la ha amenazado con matarla?
+    \item amenaza-last: la ha amenazado con lastimarla ?
+    \item prohib-sal: aunque tenga dinero no cumple con los gastos del hogar?
+    \item humillacion: la ha avergonzado, menospreciado o humillado?
+    \item pal-gros: la ha insultado, se dirigió a usted con palabras groseras o agresivas?
+    
+\end{itemize}
+
+
+\subsection{Árboles de Clasificación (CART) }
 El método CART uso condiciones basadas en cortes sobre covariables para realizar la clasificación (predicción) de una clase. El proceso de clasificación comienza desde el nodo raíz del árbol; en cada nodo, el proceso verificará si el valor de entrada debe continuar de forma recursiva hacia la sub-rama derecha o izquierda de acuerdo con la condición de división, y se detiene al encontrar cualquier nodo hoja (terminal) del árbol de decisión.
 
-\includegraphics{cart.png}
+\begin{figure}[!htp]
+    \centering
+    \includegraphics[scale=0.8]{cart.png}
+    \caption{Modelo Cart}
+    \label{f1_cart}
+\end{figure}
+
 
 \section{Resultados y Análisis}
 

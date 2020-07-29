@@ -1,0 +1,32 @@
+{
+    "id": "B5E4E814",
+    "path": null,
+    "project_path": null,
+    "type": "r_dataframe",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1595979929454.0,
+    "source_on_save": false,
+    "relative_order": 8,
+    "properties": {
+        "expression": "bd_cas",
+        "caption": "bd_cas",
+        "totalObservations": 4880,
+        "displayedObservations": 4880,
+        "variables": 710,
+        "cacheKey": "EFB93E26",
+        "object": "bd_cas",
+        "environment": "",
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=bd_cas&cache_key=EFB93E26&max_cols=50",
+        "preview": 0
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1698878944896,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1595979929454,
+    "read_only": false,
+    "read_only_alternatives": []
+}

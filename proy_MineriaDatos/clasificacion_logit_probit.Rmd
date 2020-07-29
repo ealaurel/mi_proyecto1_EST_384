@@ -25,7 +25,7 @@ aux<-seq(284,347,3)
 
 bd_lp<-bd_cas %>% dplyr::select(aux)
 str(bd_lp)
-
+Hmisc::describe(bd_lp)
 ```
 segun la investigacion del Doctor Cruz Guisbert Juan Richard, en su articulo que se basa a datos recopilados de caso de feminicidio en Bolivia en los años 2016 y 2017 segun datos proporcionados por la FELCV, las principales armas utilizadas en feminicidios fueron:
 * arma de fuego
@@ -50,27 +50,69 @@ la moyoria de estas caracteristicas se encuentran en las variables de nuestra bd
 
 sea "y" una variable
 
-y: por los menos sucedio una ves alguna de las variables ya mencionadas
-y: variable de tipo binario
+Indicio de Feminicidio: por los menos sucedio una ves alguna de las variables ya mencionadas
+Indicios de Feminici: variable de tipo binario
 donde "y" es un posible indicador de indicios de feminicidio
 ```{r}
 levels(bd_lp$S3_10_13)
 table(is.na(bd_lp))
-aux2<-c("1. Muchas veces","2. Pocas veces","3. Una vez")
-bd_lp<-bd_lp %>% mutate(indicio_feminicidio=S3_10_13==aux2|S3_10_13==aux2|S3_10_15==aux2|S3_10_16==aux2|S3_10_18==aux2|S3_10_19==aux2)
 
-table(bd_lp$indicio_feminicidio)
-var_elim<-c("S3_10_13","S3_10_14","S3_10_15","S3_10_16","S3_10_18","S3_10_19")
+bd_lp<-bd_lp %>% mutate(fem1=S3_10_13=="1. Muchas veces"|S3_10_14=="1. Muchas veces"|S3_10_15=="1. Muchas veces"|S3_10_16=="1. Muchas veces"|S3_10_18=="1. Muchas veces"|S3_10_19=="1. Muchas veces")
+bd_lp<-bd_lp %>% mutate(fem2=S3_10_13=="2. Pocas veces"|S3_10_14=="2. Pocas veces"|S3_10_15=="2. Pocas veces"|S3_10_16=="2. Pocas veces"|S3_10_18=="2. Pocas veces"|S3_10_19=="2. Pocas veces")
+bd_lp<-bd_lp %>% mutate(fem3=S3_10_13=="3. Una vez"|S3_10_14=="3. Una vez"|S3_10_15=="3. Una vez"|S3_10_16=="3. Una vez"|S3_10_18=="3. Una vez"|S3_10_19=="3. Una vez")
+bd_lp<-bd_lp %>% mutate(ind_feminicidio=(fem1==TRUE|fem2==TRUE|fem3==TRUE))
+#bd_lp<-bd_lp %>% mutate(ind_feminicidio=(fem1==TRUE|fem2==TRUE))
+
+aux2<-c("1. Muchas veces","2. Pocas veces","3. Una vez")
+
+table(bd_lp$ind_feminicidio)
+var_elim<-c("S3_10_13","S3_10_14","S3_10_15","S3_10_16","S3_10_18","S3_10_19","fem1","fem2","fem3")
+#var_elim<-c("S3_10_13","S3_10_14","S3_10_15","S3_10_16","S3_10_18","S3_10_19","fem1","fem2")
+Hmisc::describe(bd_lp)
 bd_lp2<-bd_lp %>% dplyr::select(-var_elim)
 
 Hmisc::describe(bd_lp2)
 
 ```
+
+
 volviendo a las demas variables binarias
 ```{r}
-bd_lp2<-bd_lp2 %>% mutate(pal_gros=S3_10_01==aux2,humillacion=S3_10_02==aux2,prohib_sal=S3_10_03==aux2,amenaza_last=S3_10_04==aux2,amenaza_matar=S3_10_05==aux2,quitar_hijos=S3_10_06==aux2,no_gast_casa=S3_10_07==aux2,prohib_propi=S3_10_08==aux2,destruido_cosas=S3_10_09==aux2,quit_dinero=S3_10_10==aux2,quit_bien=S3_10_11==aux2,empujado=S3_10_12==aux2,amenaza_armas=S3_10_17==aux2,oblig_rela=S3_10_20==aux2,exige_rela=S3_10_21==aux2,oblig_no_gusta=S3_10_22==aux2)
-bd_lp2<-bd_lp2 %>% dplyr::select(-c(1:16))
+bd_lp2<-bd_lp2 %>% mutate(pal_gros=S3_10_01=="1. Muchas veces"|S3_10_01=="2. Pocas veces"|S3_10_01=="3. Una vez")
 
+bd_lp2<-bd_lp2 %>% mutate(humillacion=S3_10_02=="1. Muchas veces"|S3_10_02=="2. Pocas veces"|S3_10_02=="3. Una vez")
+
+bd_lp2<-bd_lp2 %>% mutate(prohib_sal=S3_10_03=="1. Muchas veces"|S3_10_03=="2. Pocas veces"|S3_10_03=="3. Una vez")
+
+bd_lp2<-bd_lp2 %>% mutate(amenaza_last=S3_10_04=="1. Muchas veces"|S3_10_04=="2. Pocas veces"|S3_10_04=="3. Una vez")
+
+bd_lp2<-bd_lp2 %>% mutate(amenaza_matar=S3_10_05=="1. Muchas veces"|S3_10_05=="2. Pocas veces"|S3_10_05=="3. Una vez")
+
+bd_lp2<-bd_lp2 %>% mutate(quitar_hijos=S3_10_06=="1. Muchas veces"|S3_10_06=="2. Pocas veces"|S3_10_06=="3. Una vez")
+
+bd_lp2<-bd_lp2 %>% mutate(no_gast_casa=S3_10_07=="1. Muchas veces"|S3_10_07=="2. Pocas veces"|S3_10_07=="3. Una vez")
+
+bd_lp2<-bd_lp2 %>% mutate(prohib_prop=S3_10_08=="1. Muchas veces"|S3_10_08=="2. Pocas veces"|S3_10_08=="3. Una vez")
+
+bd_lp2<-bd_lp2 %>% mutate(destruido_cosas=S3_10_09=="1. Muchas veces"|S3_10_09=="2. Pocas veces"|S3_10_09=="3. Una vez")
+
+bd_lp2<-bd_lp2 %>% mutate(quit_dinero=S3_10_10=="1. Muchas veces"|S3_10_10=="2. Pocas veces"|S3_10_10=="3. Una vez")
+
+bd_lp2<-bd_lp2 %>% mutate(quit_bien=S3_10_11=="1. Muchas veces"|S3_10_11=="2. Pocas veces"|S3_10_11=="3. Una vez")
+
+bd_lp2<-bd_lp2 %>% mutate(empujado=S3_10_12=="1. Muchas veces"|S3_10_12=="2. Pocas veces"|S3_10_12=="3. Una vez")
+
+bd_lp2<-bd_lp2 %>% mutate(amenaza_armas=S3_10_17=="1. Muchas veces"|S3_10_17=="2. Pocas veces"|S3_10_17=="3. Una vez")
+
+bd_lp2<-bd_lp2 %>% mutate(oblig_rela=S3_10_20=="1. Muchas veces"|S3_10_20=="2. Pocas veces"|S3_10_20=="3. Una vez")
+
+bd_lp2<-bd_lp2 %>% mutate(exige_rela=S3_10_21=="1. Muchas veces"|S3_10_21=="2. Pocas veces"|S3_10_21=="3. Una vez")
+
+bd_lp2<-bd_lp2 %>% mutate(obliga_no_gusta=S3_10_22=="1. Muchas veces"|S3_10_22=="2. Pocas veces"|S3_10_22=="3. Una vez")
+
+
+bd_lp2<-bd_lp2 %>% dplyr::select(-c(1:16))
+Hmisc::describe(bd_lp2)
 ```
 bd de entrenamiento y testeo
 ```{r}
@@ -82,7 +124,7 @@ testbd<-bd_lp2[index==2,]
 ```
 modelos logit
 ```{r}
-m1<-glm(indicio_feminicidio~.-oblig_rela,data=trainbd,family = binomial(link="logit"))
+m1<-glm(ind_feminicidio~.,data=trainbd,family = binomial(link="logit"))
 ```
 idientificadno las variables significativas
 ```{r}
@@ -98,20 +140,22 @@ table(clase)
 ```
 comparando lo observado y lo predicho
 ```{r}
-table(testbd$indicio_feminicidio,clase)
+table(testbd$ind_feminicidio,clase)
 ```
 Generar la matriz de confusión (librería caret)
   
 ```{r}
 library(caret)
-confusionMatrix(table(testbd$indicio_feminicidio,clase))
+confusionMatrix(table(testbd$ind_feminicidio,clase))
 ```
 Efectos marginales
 
 ```{r}
 library(mfx)
 info<-logitmfx(formula(m2),data=testbd)
-barplot(info$mfxest[,1],horiz = T,las=1,cex.names = 0.5,xlim=c(-0.1,0.70),pos=-0.02)
-title("Principales Indicios de Feminicidio
+barplot(info$mfxest[,1],horiz = T,las=1,cex.names = 0.7,xlim=c(-0.1,0.7),pos=-0.02)
+title("Principales Variables de Indicio de Feminicidio
       Modelo Logit(Efectos Marginales)")
+
+
 ```
