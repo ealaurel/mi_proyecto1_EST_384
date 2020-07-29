@@ -206,94 +206,73 @@ Se cuenta con 5 bases de datos:
 \end{itemize}
 
 \section{Metodología}
+%%%%%%%%analisis de corrrespondecia
 \subsection{Análisis de Correspondencia}
-El análisis de correspondencia
-(AC) es una técnica de interdependencia que se ha ido haciendo más
-popular para la reducción dimensional y la elaboración de mapas conceptuales. Es una técnica de composición debido a que el mapa perceptual se basa en la asociación de objetos y
-un conjunto de características descriptivas o atributos especificados por
-el investigador. Su aplicación más
-directa es la representación de correspondencia de categorías de variables,
-particularmente aquellas medidas en
-escalas de medidas nominales.\autocite{guale2012modelo}
-
-El AC puede utilizarse para examinar la asociación entre las categorías de sólo una fila o una columna
-o determinar la asociación entre categorías de filas y columnas. El máximo número de dimensiones depende
-del mínimo número de categorías
-– variables que se analizan de forma
-cruzada, es decir, min(F-1,C-1), donde F es el número de filas y C es el
-número de columnas. Si X y Y son
-variables categóricas con valores {$x_1,x_2,..,x_r$} y ${y_1,y_2,...,y_c}$ como se puede ver en la siguiente tabla:
+Desarrollado por los franceses, el análisis de correspondencia es un procedimiento gráfico para representar
+asociaciones en una tabla de frecuencias o recuentos. Nos concentraremos en un
+tabla de frecuencias bidireccional o tabla de contingencia. Si la tabla de contingencia tiene I
+filas y columnas J, la trama producida por el análisis de correspondencia contacta dos conjuntos
+de puntos: un conjunto de I puntos correspondientes a las filas y un conjunto de J puntos correspondientes
+a las columnas Las posiciones de los puntos reflejan asociaciones.
+Los puntos de fila que están juntos indican filas que tienen perfiles similares (condicional
+distribuciones) a través de las columnas. Los puntos de columna que están juntos indican
+columnas con prefijos similares (distribuciones condicionales) en las filas.
+Finalmente, los puntos de fila que están cerca de los puntos de columna representan combinaciones que
+ocurrir con más frecuencia de lo que se esperaría de un modelo de independencia:
+es decir, un modelo en el que las categorías de fila no están relacionadas con las categorías de columna.
+El resultado habitual de un análisis de correspondencia incluye el "mejor" bidimensional
+representación de los datos, junto con las coordenadas del trazado
+puntos y una medida (llamada inercia) de la cantidad de información retenida en
+cada dimensión\autocite{jhonson}
+\subsubsection{Desarrollo algebraico del análisis de correspondencia}
 
 \begin{table}[!htb]
     %\centering
     \includegraphics{tabla_corres.png}
-    %\caption{Caption}
+    \caption{Tabla Cruzada}
     \label{tab1}
 \end{table}
 
-
-La frecuencia $n_i_.$ = $\sum_{j=1}^{c}n_i_j$ 
-recibe  el  nombre  de  frecuencia marginales de X, y     $n_._j$ = $\sum_{i=1}^{r}n_i_j$ recibe
-el nombre de frecuencia marginal de
-Y. El valor $n_._.$ = $\sum_{j=1}^{c}\sum_{i=1}^{r}n_i_j$ es el valor
-de la frecuencia total de la tabla.
-\subsubsection{Dependencia e independencia
-en las tablas de correspondencia} 
-La independencia o dependencia
-entre X y Y se la verifica habitualmente utilizando la $X^2$
- de Pearson, donde
-se verifica la hipótesis nula H0
-: $X$ y $Y$
-son independientes y la hipótesis alternativa $X$ y $Y$ son dependientes, según: valor p=$X^2_(r-1)_(c-1) >= G^2$ para
-un nivel de significación la Hipótesis
-$H_o$ se rechaza si dicho valor-p es
-menor o igual a 0.05. Dónde:
+Para comenzar, dejemos que X la tabla \ref{tab1}, con los elementos $X_i_j$ sea una tabla bidireccional $I*J$ de frecuencias no escritas
+o cuenta. En nuestra discusión tomamos I> J y suponemos que X es de pleno rango de columna J. Las filas y columnas de la tabla de contingencia X corresponden a diferentes categorías de dos características diferentes.
+Si n es el total de las frecuencias en la matriz de datos X, primero construimos una matriz de proporciones $P = {P_i_j}$ dividiendo cada elemento de X por n. Por lo tanto
 
 \begin{equation}
-G^2 = \sum_{i=1}^{r}\sum_{j=1}^{c}\frac{(n_i_j-e_i_j)^2}{e_i_j} 
-\label{eq1}
+p_i_j=\frac{x_i_j}{n};   i = 1,2, ..., I, j = 1,2, ..., J    
 \end{equation}
 
-Si la hipótesis nula se rechaza,
-las variables X y Y son dependientes,
-es conveniente saber el tipo de dependencia, esto se logra obteniendo
-los residuos tipificados corregidos :
+La matriz P se llama matriz de correspondencia.
+
+A continuación, defina los vectores de las sumas de fila y columna r y c respectivamente, y las
+matrices diagonales $D_r$ y $D_c$ con los elementos de r y c en las diagonales. Así
+
 \begin{equation}
-r_i_j = \frac{n_i_j-e_i_j}{\sqrt{e_i_j}\sqrt{1-\frac{n_i_.}{n_._.}}}}{\sqrt{1-\frac{n_._j}{n_._.}}}
-
+    r=P1_J
 \end{equation}
 
-\subsubsection{Descomposicion de los valores singulares}
+\begin{equation}
+    c=P^t1_I
+\end{equation}}
 
-Para matrices rectangulares generales puede conseguirse una descomposición similar a la descomposición espectral de una matriz
-simétrica. Como en el caso de matrices cuadradas y simétricas, toda matriz rectangular de dimensiones (r ×
-c) y de rango r puede expresarse como
-producto de tres matrices, dos con
-vectores ortogonales y una diagonal.
-La descomposición es
- = UDV’
-Donde U es (r × k), D es (k ×
-k) y V’ es (c × k), donde k = min{r1,c-1}. La matriz diagonal D contiene las raíces cuadradas de los valores propios no nulos de las matrices
-CC’ o C’C , que son positivos. Estos
-términos diagonales de D =diag(μ1
-,
-μ2
-, .., μk
-) se denominan los valores
-singulares de la matriz . La matriz U
-contiene en columnas los vectores
-propios unidos a valores propios no
-nulos de CC’ y V contiene en columnas los vectores propios unidos
-a valores propios no nulos de C’C.
-Las columnas de U son ortogonales
-entre sí y también lo serán las de V.
-Los elementos diagonales de D se
-denominan los valores singulares de
-la matriz A (Daniel, 2002).
-Las matrices A y B se calculan a
-partir de las expresiones:
-$$A=D_r^{\frac{1}{2}}UD$$
-$$B=D_c^{\frac{1}{2}}VD$$
+donde $1_J$ is a J X 1 and $1_I$ is a I X 1 vectores of unos y,
+
+$D_r = diag(r_1,r_2, ... ,r_J)$ y $D_c = diag(c_1,c_2, ... ,c_I)$
+
+El algoritmo computacional para obtener coordenadas de los perfiles de fila y columna con respecto a los ejes principales, usando el SVD, es el siguiente:\autocite{MinDatR}
+
+\begin{itemize}
+    \item Calcular la matriz de residuos estadarizados: $S=D_r^{-1/2}(P-rc^t)D_c^{-1/2}$
+    \item Calcular la descomposición SVD de S :$S=UD_{\alpha}V^t$ donde $U^T U=V^T V=I$
+    \item Coordenadas principales de filas: $F=D_r^{-1/2} U D_{\alpha}$
+    \item Coordenadas principales de columnas: $G=D_c^{-1/2} V D_{\alpha}$
+    \item Coordenadas estándar de filas: $X=D_r^{-1/2} U$
+    \item Coordenadas estándar de columnas: $Y=D_c^{-1/2} V$
+    \item Calcular la Inercia: $\phi^2=\sum_i^I\sum_j^J{\frac{(p_{ij}-r_i c_j)^2}{r_i c_j}}$
+    \item Graficar las coordenadas de F y G según la la inercia contenida en la matriz $D_{\alpha}$
+    
+\end{itemize}
+
+\subsubsection{Aplicación del Método} 
 
 Para esta sección de tomaron de la base de datos de mujeres solteras, las siguientes variables:
 \begin{itemize}
@@ -303,31 +282,81 @@ Para esta sección de tomaron de la base de datos de mujeres solteras, las sigui
 
 Respecto a la segunda variable de ínteres en esta sección por lo ya definido en el marco teorico se trata de Violencia Psícologica contra las mujeres, en el ámbito social. 
 
-La dos variables son de tipo cualitativa con mas de dos categorias en la variable Departamento. Usando el metodo ya mencianado se puede observar el siguiente grafico resopecto a las relacion de las variables
-\includegraphics{analisis_corres.png}
+La dos variables son de tipo cualitativa con mas de dos categorias en la variable Departamento. Usando el metodo ya mencianado se puede observar el siguiente grafico \ref{f1_corr} respecto a las relacion de las variables
+
+\newpage
+
+\begin{figure}[!htb]
+    %\centering
+    \includegraphics{analisis_corres.png}
+    \caption{Violencia Psicologica(Humillación)-Departamento}
+    \label{f1_corr}
+\end{figure}
+
+\href{https://ealaurel.github.io/mi_proyecto1_EST_384/proy_MineriaDatos/analisis_correspondencia.html/}{\textbf{\textcolor{blue}{Pagina Web Violencia Contra las Mujeres}}}
+\\(Haga click en el parte de color Azul para redireccionarlo al codigo para la obtencion de los resultados)
 
 \subsection{Clasificación Logit}
-La forma funcional del modelo logit es:
-$$ y_i = \beta_i + \sum_{i=2}^{k}\beta_i^k X_i^k + \epsilon_i
+La forma funcional del modelo logit es \autocite{apuntesDatosCateg}}:
+
+\begin{equation}
+\centering
+ y_i = \beta_i + \sum_{i=2}^{k}\beta_i^k X_i^k + \epsilon_i
+ %\caption{Predictor Lineal}
+\label{eq1_log}
+
+\end{equation}
+
+Siendo \epsilon_i ~N(0,\sigma^2), con y_i predictor Lineal, x = (x_1,x_2,..,x_k) es el vector de características ,y_i es la variable dependiente que no es observable; lo que se observa es una variable dicotómica definida por: Y_i = 1,si pertenece a la caracteristica y,  Yi = 0  no pertenece a la característica,y lo que se estima es la probabilidad de ocurrencia de la variable dependiente:
+
+sea \theta_i el parámetro canónico o natural que se expresa como:
+
+\begin{equation}
+    \theta=\ln{\frac{\pi_i}{1-\pi_i}}
+    \label{eq2_log}
+\end{equation}
+
+Ahora igualando el parámetro canáníco o natural \ref{eq2_log} con el predictor lineal \ref{eq1_log}, esto es,
+
+\begin{equation}
+    \ln{\frac{\pi_i}{1-\pi_i}} = y_i
+    \label{eq3_log}
+\end{equation}
+
+La expresión \ref{eq3_log} es el modleo de regresión logit, este modelo tambien suele expresarse como:
+\begin{equation}
+    \pi_i=\frac{\exp{\beta_i + \sum_{i=2}^{k}\beta_i^k X_i^k}}{1+\exp{\beta_i + \sum_{i=2}^{k}\beta_i^k X_i^k}}
+\end{equation}
+Notar que como la variable respuesta es binaria, es decir tiene una distribucion Bernoulli, entonces se tiene que (\mu_i=E[y_i]). Por esta razón es que los modelos \ref{eq2_log} y \ref{eq2_log} tambien son expresados como:
+
+\begin{equation}
+\ln{\frac{\mu_i}{1-\mu_i}}=y_i 
+\end{equation}
+\begin{equation}
+    \mu_i=\frac{\exp{\beta_i + \sum_{i=2}^{k}\beta_i^k X_i^k}}{1+\exp{\beta_i + \sum_{i=2}^{k}\beta_i^k X_i^k}}
+\end{equation} 
+
+Para obtener los estiamdores de maxima verosimilitud de $$\beta_1,...,\beta_p$ se debe recurrir a métodos de aproximacion numerica, hay tres métodos:
+
+\begin{itemize}
+    \item Método de Newton- Raphson
+    \item Método de Scoring de Fisher
+    \item Método de Minimos Cuadrados iterativamente reponderados
+\end{itemize}
 
 
-donde x = (x1,x2,...xk) es el vector de características del hogar,yi* es la variable dependiente que no es observable; lo que se observa es una variable dicotómica definida por: Yi = 1 si Yi*>0 Yi = 0 e. o. c y lo que se estima es la probabilidad de ocurrencia de la variable dependiente:
+La clasificación  se obtiene a partir de la probabilidad estimada  y un punto de corte de esta probabilidad. 
 
-Prob(Yi)=Prob (Yi*>0)=Prob(εi>-βXi)
-Prob(Yi)=1 -F( -βXi),
+Las medidas más recomendadas para verificar la bondad de ajuste de los modelos Logit y Probit pueden ser el valor de la función de verosimilitud en el máximo valor; el estadístico L que surge de una prueba de homoscedasticidad con distribución $X^2_(p)$ ,donde p es el número de variables explicativas dentro del modelo.
 
-donde F es la función de distribución acumulativa de e, siendo ei ~N(0,o2), que al ser logística tiene la siguiente forma:
-
-
-
-La clasificación de pobre o no pobre se obtiene a partir de la probabilidad estimada  y un punto de corte de esta probabilidad. l + exp(A)
-
-Las medidas más recomendadas para verificar la bondad de ajuste de los modelos Logit y Probit pueden ser el valor de la función de verosimilitud en el máximo valor; el estadístico L que surge de una prueba de homoscedasticidad con distribución X2(p)g.l. (donde p es el número de variables explicativas dentro del modelo). Si este estadístico es mayor que el valor crítico no rechazamos H0, y este modelo es homoscedástico. El coeficiente de determinación pseudo R2 es también una medida de bondad de ajuste que toma en cuenta la restricción del rango de las variables cualitativas.
+Si este estadístico es mayor que el valor crítico no rechazamos $H_o$, y este modelo es homoscedástico. El coeficiente de determinación pseudo $R^2$ es también una medida de bondad de ajuste que toma en cuenta la restricción del rango de las variables cualitativas.
 
 \subsubsection{Aplicacion del Metodo }
-segun la investigacion \autocite{cruz2019factores}, en su articulo que se basa a datos recopilados de caso de feminicidio en Bolivia en los años 2016 y 2017 segun datos proporcionados por la FELCV, las principales armas utilizadas en feminicidios fueron:
+
+Segun el trabajo de investigación  del Doctor Juan Cruz \autocite{cruz2019factores}, en su articulo que se basa en datos recopilados de caso de feminicidio en Bolivia en los años 2016 y 2017 segun datos proporcionados por la FELCV, las principales armas utilizadas en feminicidios fueron:
+
 \begin{itemize}
-    \item arma de fuego
+\item arma de fuego
 \item arma blanca
 \item contusiones
 \item lazo 
@@ -352,13 +381,15 @@ La moyoria de estas caracteristicas se encuentran en las variables de nuestra bd
  
 \end{itemize}
 
-Definiendo " Indicio de Feminicidio'' una variable
+Definiendo La variable " Indicio de Feminicidio'' 
 \begin{itemize}
     \item Indicios de Feminicidio: por los menos sucedio una ves alguna de las variables ya mencionadas
 
 \end{itemize}
 variable de tipo binario
-donde " Indicios de Feminicidio'' es un posible indicador de indicios de feminicidio.
+donde " Indicios de Feminicidio'' es un posible indicador de feminicidio.
+
+Utilizando el Metodo ya mencionado (Método Logit) se obtuvo resultados que se pueden apreciar en el gráfico \ref{f1_log} a continuación: 
 
 \begin{figure}[!htp]
 %\centering
@@ -367,12 +398,16 @@ donde " Indicios de Feminicidio'' es un posible indicador de indicios de feminic
 \label{f1_log}
 \end{figure}
 
+\href{https://ealaurel.github.io/mi_proyecto1_EST_384/proy_MineriaDatos/clasificacion_logit_probit.html}{\textbf{\textcolor{blue}{Pagina Web Violencia Contra las Mujeres}}}
+\\(Haga click en el parte de color Azul para redireccionarlo al codigo para la obtencion de los resultados).
+
 Las etiquetas de las variables en la figura \ref{f1_log} son las siguientes:
+
 ¿Desde que inició la relación con su (ex) pareja/ (ex) novio, alguna vez él,						
 
 \begin{itemize}
     %\item exige-rela: le ha exigido tener relaciones sexuales aunque usted no quería?
-    item oblig-rela:  ha usado la fuerza física para obligarla a tener relaciones sexuales?
+    \item oblig-rela:  ha usado la fuerza física para obligarla a tener relaciones sexuales?
     \item amenaza-armas:la ha amenazado con armas (cuchillo, navaja o pistola)?
     \item empujado:  la ha empujado o le ha jalado el cabello?
     \item quit-dinero:  le ha quitado, o se ha adueñado de su dinero?
@@ -388,9 +423,9 @@ Las etiquetas de las variables en la figura \ref{f1_log} son las siguientes:
     
 \end{itemize}
 
-
+%%%%%%%%%%%%%%%%%% metodo 3
 \subsection{Árboles de Clasificación (CART) }
-El método CART uso condiciones basadas en cortes sobre covariables para realizar la clasificación (predicción) de una clase. El proceso de clasificación comienza desde el nodo raíz del árbol; en cada nodo, el proceso verificará si el valor de entrada debe continuar de forma recursiva hacia la sub-rama derecha o izquierda de acuerdo con la condición de división, y se detiene al encontrar cualquier nodo hoja (terminal) del árbol de decisión.
+El método CART uso condiciones basadas en cortes sobre covariables para realizar la clasificación (predicción) de una clase. El proceso de clasificación comienza desde el nodo raíz del árbol; en cada nodo, el proceso verificará si el valor de entrada debe continuar de forma recursiva hacia la sub-rama derecha o izquierda de acuerdo con la condición de división, y se detiene al encontrar cualquier nodo hoja (terminal) del árbol de decisión. \autocite{MinDatR}
 
 \begin{figure}[!htp]
     \centering
@@ -399,20 +434,24 @@ El método CART uso condiciones basadas en cortes sobre covariables para realiza
     \label{f1_cart}
 \end{figure}
 
+\href{https://ealaurel.github.io/mi_proyecto1_EST_384/proy_MineriaDatos/metodo_cart.html/}{\textbf{\textcolor{blue}{Pagina Web Violencia Contra las Mujeres}}}
+\\(Haga click en el parte de color Azul para redireccionarlo al codigo para la obtencion de los resultados)
+
+\newpage
 
 \section{Resultados y Análisis}
 
 
 Un resultado notable referido al analisis de correspondencia , que se pudo realizar, es que se puede evidenciar que, existe con mas intensidad diferentes tipos de Violencia en la región del altiplano de Bolivia y va disminuyendo a medida que la región tiende al oriente como los departamentos de Pando, Beni y Santa Cruz, en las que la Violencia contra las mujeres es muy reducido en comparación con los departamentos de La Paz, Oruro y Potosí.
 
-Con el modelo logit con una acauracidad del 87 por ciento se puede notar que en los hogares de las mujeres encuestadas, en este caso base de datos muejeres casadas se pudo obtener grandes resultados con la intencion de encontrar algunos patrones que puedan evidenciar indicios de Feminicifo en sus respectivos Hogares.  
+Con el modelo logit con una acauracidad del 85 por ciento se puede notar que en los hogares de las mujeres encuestadas, en este caso base de datos mujeres casadas se pudo obtener grandes resultados con la intencion de encontrar algunos patrones que puedan evidenciar indicios de Feminicidio en sus respectivos Hogares.  
 
 Con el metodo CART se puede notar que una de las razones del porque existe Violencia contra las mujeres es el hogar donde crecieron sus parejas, para la aplicacion del metodo se utilizo la base de datos de muejeres separadas. Los resultados obtenidos tienen una acuaracidad del 61 por ciento. 
 
 \section{Conclusiones y Recomendaciones}
 
 \subsection{Conclusiones}
-Se puede notar solo con los pocos resultados que se pudo obtener se puede evidenciar que uno de los grandes flagelos de nuestra sociedad es la Violencia contra las Mujeres que posteriormente puede llegar a mayores consecuencias como Feminicidios. 
+Se puede notar con los resultados que se pudo obtener se puede evidenciar que uno de los grandes flagelos de nuestra sociedad es la Violencia contra las Mujeres que posteriormente puede llegar a mayores consecuencias como Feminicidios. 
 
 Con los resultados de la encuesta en cuestión se ha podido mostrar que por lo menos 5 de cada 10 mujeres viven o han vivido algún tipo de Violencia en Bolivia.
 
